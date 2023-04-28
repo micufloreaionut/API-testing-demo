@@ -1,8 +1,8 @@
-const request = require('supertest');
-const Ajv = require("ajv")
+import { agent } from 'supertest';
+import Ajv from "ajv";
 
-async function postRequest(...arg){
-    return request.agent(arg[0])//URL
+export async function postRequest(...arg){
+    return agent(arg[0])//URL
         .post(arg[1])//API
         .send(arg[2])//BODY
         .set(arg[3])//HEADER
@@ -15,8 +15,23 @@ async function postRequest(...arg){
         });
 }
 
-async function postWithFile(...arg) {
-    return request.agent(arg[0])//URL
+export async function postWithForm(...arg) {
+    return agent(arg[0])//URL
+        .post(arg[1]) //API
+        .type('form')
+        .send(arg[2])//FORM
+        .set(arg[3])//HEADER
+        .then(function (res) {
+            return res;//RESPONSE
+        })
+        .catch(function (err) {
+            console.error(err.message);
+            return Promise.reject(err);
+        });
+}
+
+export async function postWithFile(...arg) {
+    return agent(arg[0])//URL
         .post(arg[1]) //API
         .set(arg[2])//HEADER
         .field(arg[3], arg[4])
@@ -30,8 +45,8 @@ async function postWithFile(...arg) {
         });
 }
 
-async function putWithFile(...arg) {
-    return request.agent(arg[0])//URL
+export async function putWithFile(...arg) {
+    return agent(arg[0])//URL
         .put(arg[1]) //API
         .set(arg[2])//HEADER
         .field(arg[3], arg[4])
@@ -45,8 +60,8 @@ async function putWithFile(...arg) {
         });
 }
 
-async function getRequest(...arg){
-    return request.agent(arg[0])//URL
+export async function getRequest(...arg){
+    return agent(arg[0])//URL
         .get(arg[1])//API
         .set(arg[2])//HEADERS
         .then(function (res){
@@ -58,8 +73,8 @@ async function getRequest(...arg){
         });
 }
 
-async function deleteRequest(...arg) {
-    return request.agent(arg[0])                  //URL
+export async function deleteRequest(...arg) {
+    return agent(arg[0])                  //URL
         .del(arg[1])                              //API
         .set(arg[2])                              //HEADER
         .then(function (res) {
@@ -71,8 +86,8 @@ async function deleteRequest(...arg) {
         });
 }
 
-async function putRequest(...arg) {
-    return request.agent(arg[0])                  //URL
+export async function putRequest(...arg) {
+    return agent(arg[0])                  //URL
         .put(arg[1])                              //API
         .send(arg[2])                             //BODY
         .set(arg[3])                              //HEADER
@@ -85,8 +100,8 @@ async function putRequest(...arg) {
         });
 }
 
-async function patchRequest(...arg) {
-    return request.agent(arg[0])                  //URL
+export async function patchRequest(...arg) {
+    return agent(arg[0])                  //URL
         .patch(arg[1])                              //API
         .send(arg[2])                             //BODY
         .set(arg[3])                              //HEADER
@@ -99,21 +114,10 @@ async function patchRequest(...arg) {
         });
 }
 
-async function schemaValidation(schema, responseBody){
+export async function schemaValidation(schema, responseBody){
     const ajv = new Ajv()
     const validate = ajv.compile(schema)
     const valid = validate(responseBody)
     if (!valid) console.log(validate.errors)
     return valid
 }
-
-module.exports = {
-    postRequest,
-    getRequest,
-    deleteRequest,
-    putRequest,
-    patchRequest,
-    schemaValidation,
-    postWithFile,
-    putWithFile
-};

@@ -1,5 +1,5 @@
-const authData = {
-
+export const authData = {
+    login: "/user/login",
+    username: "test",
+    password: "abc123"
 }
-
-module.export = { authData };

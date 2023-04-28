@@ -3,3 +3,7 @@ export const petEndpoints = {
     uploadImage: "/uploadImage",
     findByStatus: "/findByStatus"
 };
+
+export let header = {
+    "Accept": "application/json"
+}
