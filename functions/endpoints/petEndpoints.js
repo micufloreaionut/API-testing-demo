@@ -1,6 +1,5 @@
 import { expect as test } from 'chai';
 import { postWithFile, postRequest, putRequest, getRequest, postWithForm, deleteRequest } from '../requests.js';
-//const env = require('../../configs/envs.js').default[process.env.ENV];
 import * as environments from '../../configs/envs.js';
 import { petEndpoints } from '../../data/apis/petAPIData.js';
 

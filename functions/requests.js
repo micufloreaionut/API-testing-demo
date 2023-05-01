@@ -1,5 +1,4 @@
 import { agent } from 'supertest';
-import Ajv from "ajv";
 
 export async function postRequest(...arg){
     return agent(arg[0])//URL
@@ -112,12 +111,4 @@ export async function patchRequest(...arg) {
             console.error(err.message);
             return Promise.reject(err);
         });
-}
-
-export async function schemaValidation(schema, responseBody){
-    const ajv = new Ajv()
-    const validate = ajv.compile(schema)
-    const valid = validate(responseBody)
-    if (!valid) console.log(validate.errors)
-    return valid
 }

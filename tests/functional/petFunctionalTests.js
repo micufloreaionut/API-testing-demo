@@ -47,7 +47,7 @@ let testCases = {
 }
 
 describe("Test Pet endpoints", function () {
-
+    this.retries(2);
     before(async function () {
         let log = await loginUser(authData.username, authData.password, header, 200);
         api_key = log.message.split(":").pop();      

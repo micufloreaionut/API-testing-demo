@@ -4,7 +4,6 @@
     "chai": "^4.3.7",
     "chai-subset": "^1.6.0",
     "cross-env": "^7.0.3",
-    "is-reachable": "^5.2.1",
     "mocha": "^10.2.0",
     "mocha-allure-reporter": "^1.4.0",
     "supertest": "^6.3.3",
@@ -93,7 +92,8 @@
     "yocto-queue": "^0.1.0"
   },
   "scripts": {
-    "test": "cross-env ENV=dev mocha 'tests/functional/petFunctionalTests.js' --timeout 20000"
+    "functional": "cross-env ENV=dev mocha 'tests/functional/petFunctionalTests.js' --timeout 20000",
+    "integration": "cross-env ENV=dev mocha 'tests/integration/petOrderIntegrationSuite.js' --timeout 20000"
   },
   "repository": {
     "type": "git",
