@@ -56,7 +56,7 @@ describe("Test Pet ordering system", function () {
         })
         
         //order pet
-        it("Order pets", async function(){
+        it(data[0], async function(){
             //set quantity
             let quantity = data[1] - data[2] > 0 ? data[2] : data[1] - data[2] == 0 ? inventory : inventory + 1;
             //place order
