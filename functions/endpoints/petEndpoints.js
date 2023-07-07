@@ -69,8 +69,8 @@ export async function updatePetWithFormData(...arg) {
         env.petStore,
         petEndpoints.pet + "/" +
         arg[0],                     //pet id
-        arg[1],                     //header
-        arg[2]                     //form data
+        arg[1],                     //form data
+        arg[2]                     //header
     )
     test(res.statusCode).to.equal(arg[3]);
     return res;
