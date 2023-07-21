@@ -14,8 +14,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "functional": "cross-env ENV=dev mocha 'tests/functional/petFunctionalTests.js' --timeout 20000",
-    "integration": "cross-env ENV=dev mocha 'tests/integration/petOrderIntegrationSuite.js' --timeout 20000"
+    "functional": "cross-env ENV=dev mocha 'tests/functional/petEndpointsTests.js' --timeout 20000",
+    "integration": "cross-env ENV=dev mocha 'tests/integration/petOrderIntegrationSuite.js' --timeout 20000",
+    "testing": "cross-env ENV=dev mocha 'tests/functional/petEndpointsTests.js' --timeout 20000"
   },
   "repository": {
     "type": "git",
