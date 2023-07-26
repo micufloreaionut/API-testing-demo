@@ -11,3 +11,5 @@ To run the tests:
   `npm run functional`
 5. Use the following command to run the API integration tests
   `npm run integration`
+
+**Note:** Project was build using [newmoc][https://marketplace.visualstudio.com/items?itemName=FloreaIonutMicu.newmoc] mocha snippets vs code extension.
